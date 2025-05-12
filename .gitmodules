@@ -1,0 +1,3 @@
+[submodule "rowt-sdk"]
+	path = rowt-sdk
+	url = https://github.com/tophercully/rowt-sdk
