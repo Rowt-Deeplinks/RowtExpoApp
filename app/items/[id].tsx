@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { items } from './exampleProducts';
 import { useLocalSearchParams } from 'expo-router';
 import { Button, Image, Text, View } from 'react-native';
@@ -7,6 +7,7 @@ import { Share } from 'react-native';
 
 const ProductPage = () => {
   const { id } = useLocalSearchParams();
+  const [generatingLink, setGeneratingLink] = useState(false);
 
   const item = items.find((item) => item.id === id);
 
@@ -16,6 +17,7 @@ const ProductPage = () => {
 
   const handleShare = async () => {
     try {
+      setGeneratingLink(true);
       if (
         !process.env.EXPO_PUBLIC_ROWT_SERVER_URL ||
         !process.env.EXPO_PUBLIC_ROWT_API_KEY ||
@@ -51,6 +53,8 @@ const ProductPage = () => {
       });
     } catch (error) {
       console.error('Error creating link:', error);
+    } finally {
+      setGeneratingLink(false);
     }
   };
 
@@ -68,7 +72,11 @@ const ProductPage = () => {
       <Text>{item.description}</Text>
       <Text>{item.content}</Text>
 
-      <Button title="Share" onPress={handleShare} />
+      <Button
+        title={generatingLink ? 'Sharing...' : 'Share'}
+        disabled={generatingLink}
+        onPress={handleShare}
+      />
     </View>
   );
 };

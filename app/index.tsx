@@ -11,8 +11,14 @@ const Home = () => {
       }}
     >
       <Text>Home Screen</Text>
-      <Link style={{ color: 'blue' }} href="myapp://settings">
-        Link to Settings Page
+      <Link style={{ color: 'blue' }} href="myapp://items/1">
+        Item 1
+      </Link>
+      <Link style={{ color: 'blue' }} href="myapp://items/2">
+        Item 2
+      </Link>
+      <Link style={{ color: 'blue' }} href="myapp://items/3">
+        Item 3
       </Link>
     </View>
   );
