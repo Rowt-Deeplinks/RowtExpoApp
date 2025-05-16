@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { items } from './exampleProducts';
 import { useLocalSearchParams } from 'expo-router';
 import { Button, Image, Text, View } from 'react-native';
-import { RowtLink } from '@/rowt-sdk/Rowt';
 import { Share } from 'react-native';
+import { RowtLink } from 'rowt-sdk/Rowt';
 
 const ProductPage = () => {
   const { id } = useLocalSearchParams();
